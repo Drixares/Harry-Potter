@@ -8,10 +8,12 @@
   /* --h2-size: 60px; */
   --h2-size: calc(20px + 2vw);
   --h3-size: calc(16px + 1vw);
-  --text-size: calc(16px + 0.2vw);
+  --text-p-size: calc(14px + 0.2vw);
+  --text-m-size: calc(16px + 0.2vw);
   --filter: #161927bd;
   --bg: #161927;
   --bg1: #212433;
+  --bg2: #383b4d;
   --padding-inline: 5vw;
   --padding-inline2: 15vw;
   --green: #01c101;
@@ -91,6 +93,7 @@ header > .mainNav {
   color: var(--text);
   text-decoration: none;
   transition: color 0.2s;
+  font-size: var(--text-p-size);
 }
 
 .boxIcon {
@@ -121,11 +124,19 @@ header > .mainNav {
 .boxTitle {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  padding-top: 200px;
   flex-direction: column;
   height: calc(100vh - 125px);
-  gap: 40px;
   margin-inline: 30px;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 40px;
 }
 
 h1.title {
@@ -138,7 +149,7 @@ h1.title {
 .subtitle {
   text-align: center;
   max-width: 700px;
-  font-size: var(--text-size);
+  font-size: var(--text-m-size);
 }
 
 .btnCollection {
@@ -146,7 +157,7 @@ h1.title {
   color: var(--primary);
   border: 2px solid var(--primary);
   padding: 10px 15px;
-  font-size: var(--text-size);
+  font-size: var(--text-m-size);
   position: relative;
   z-index: 3;
   transition: color 0.3s ease-in-out;
@@ -183,6 +194,7 @@ main {
   justify-content: center;
   gap: 10vw;
   padding-inline: var(--padding-inline2);
+  /* margin-bottom: 100px; */
 }
 
 .aboutContainer {
@@ -217,7 +229,7 @@ main {
 
 .aboutContainer__textBox > p {
   max-width: 600px;
-  font-size: var(--text-size);
+  font-size: var(--text-m-size);
 }
 
 .faqBox {
@@ -239,18 +251,15 @@ main {
 
 .faqContainer__textBox {
   text-align: center;
-  /* max-width: 500px; */
   margin-bottom: 75px;
   max-width: 600px;
+  font-size: var(--text-m-size);
 }
 
-/* .faqContainer__textBox > h2 {
+.faqObject p,
+.faqObject span {
+  font-size: var(--text-p-size);
 }
-
-.faqContainer__textBox > p {
-  max-width: 500px;
-} */
-
 .faqContainer__objectsBox {
   display: flex;
   flex-direction: column;
@@ -334,6 +343,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 15px;
+  font-size: var(--text-p-size);
 }
 
 .contactBox__emailContainer {

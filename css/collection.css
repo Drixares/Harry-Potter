@@ -1,0 +1,81 @@
+.cardsBox {
+  padding-inline: var(--padding-inline);
+}
+
+.cardsBox__filterBox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+.cardsBox__filterBox > .filterbtn {
+  border: none;
+  color: var(--text);
+  font-size: 1rem;
+  background-color: var(--bg1);
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.filterbtn:hover {
+  background-color: var(--bg2);
+}
+
+.cardsBox__filterBox > .tagsList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.tagsList > div {
+  padding: 5px 15px;
+  background-color: var(--bg2);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.tagsList > div > span,
+.cardsBox__filterBox > .filterbtn > i {
+  margin-left: 10px;
+}
+
+.tagsList > div:hover {
+  background-color: var(--bg1);
+}
+
+.tagsList > div > i:hover {
+  color: rgb(216, 60, 60);
+}
+
+#filterList {
+  inset: unset;
+  top: anchor(bottom);
+  left: anchor(center);
+  translate: -50%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  background-color: var(--bg1);
+  border: none;
+  width: 150px;
+  border-radius: 10px;
+}
+
+#filterList > div {
+  width: 100%;
+  /* background-color: lightblue; */
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+#filterList > div:hover {
+  background-color: var(--bg2);
+}
