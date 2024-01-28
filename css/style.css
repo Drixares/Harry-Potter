@@ -5,9 +5,12 @@
   --text: #f5f5f5;
   --text2: #121212;
   --h1-size: calc(30px + 4vw);
-  --text-size: calc(18px + 0.2vw);
+  --h2-size: 60px;
+  --text-size: calc(16px + 0.2vw);
   --filter: #161927bd;
   --bg: #161927;
+  --padding-inline: 5vw;
+  --padding-inline2: 15vw;
 }
 
 *,
@@ -27,6 +30,8 @@ html {
 html,
 .wrapper {
   overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 header {
@@ -35,7 +40,7 @@ header {
   background: no-repeat center url(../ressources/images/background.jpg);
   background-size: cover;
   height: 100vh;
-  color: var(--text);
+  /* color: var(--text); */
   z-index: 3;
 }
 
@@ -50,13 +55,23 @@ header::before {
   z-index: -1;
 }
 
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(180deg, rgba(22, 25, 39, 0) 0%, #161927 100%);
+  z-index: -1;
+}
+
 nav {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 125px;
   width: 100%;
-  /* background-color: lightblue; */
   position: relative;
 }
 
@@ -94,7 +109,7 @@ nav {
 }
 
 .navLink:hover,
-.boxIcon:hover svg {
+.boxIcon > a:hover svg {
   color: var(--primary);
   fill: var(--primary);
 }
@@ -151,4 +166,52 @@ h1.title {
 
 .btnCollection:hover {
   color: var(--text2);
+}
+
+.aboutBox {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10vw;
+  padding-inline: var(--padding-inline2);
+}
+
+.aboutContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* gap: 10vw; */
+  width: 100%;
+}
+
+.aboutContainer__imgBox > .imgContainer {
+  width: 350px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 30px 5px rgba(101, 172, 238, 0.3);
+}
+
+.aboutContainer__imgBox > .imgContainer > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutContainer__textBox > h2 {
+  font-size: var(--h2-size);
+}
+
+.aboutContainer__textBox > p {
+  max-width: 600px;
+  margin-top: 20px;
+  font-size: var(--text-size);
+}
+
+.faqBox {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
