@@ -13,11 +13,11 @@
   <body>
     <div class="wrapper">
       <header>
-        <nav>
+        <nav class="mainNav">
           <ul class="navBox">
             <li><a href="index.html" class="navLink">Home</a></li>
             <li><a href="" class="navLink">Collection</a></li>
-            <li><a href="" class="navLink">FAQ</a></li>
+            <li><a href="#faq" class="navLink">FAQ</a></li>
           </ul>
 
           <div class="boxIcon">
@@ -41,6 +41,28 @@
               </svg>
             </a>
           </div>
+        </nav>
+        <svg
+          width="50"
+          height="43"
+          viewBox="0 0 50 43"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          id="burgerIcon"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M0 3.5C0 1.56701 1.56701 0 3.5 0H46.5C48.433 0 50 1.56701 50 3.5C50 5.43299 48.433 7 46.5 7H3.5C1.567 7 0 5.43299 0 3.5ZM0 21.5C0 19.567 1.56701 18 3.5 18H46.5C48.433 18 50 19.567 50 21.5C50 23.433 48.433 25 46.5 25H3.5C1.567 25 0 23.433 0 21.5ZM3.5 36C1.56701 36 0 37.567 0 39.5C0 41.433 1.567 43 3.5 43H46.5C48.433 43 50 41.433 50 39.5C50 37.567 48.433 36 46.5 36H3.5Z"
+          />
+        </svg>
+
+        <nav class="mobileNav">
+          <ul class="navBox2">
+            <li><a href="index.html" class="navLink">Home</a></li>
+            <li><a href="" class="navLink">Collection</a></li>
+            <li><a href="#faq" class="navLink">FAQ</a></li>
+          </ul>
         </nav>
 
         <div class="boxTitle">
@@ -77,7 +99,7 @@
           </div>
         </div>
 
-        <div class="faqBox">
+        <div class="faqBox" id="faq">
           <div class="faqContainer">
             <div class="faqContainer__textBox">
               <h2>Frequently asked questions</h2>
@@ -87,28 +109,24 @@
               </p>
             </div>
             <div class="faqContainer__objectsBox">
-              <div>
+              <div class="faqObject">
                 <div class="question">
                   <span
                     >Is the platform free, and if so, will it remain so?</span
                   >
-                  <img src="ressources/icons/plusIcon.svg" alt="icon" />
-                </div>
-                <div class="answer">
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Modi asperiores molestiae eos non necessitatibus, earum
-                    ipsam ipsa maiores nemo quidem illum. Et optio nihil quis
-                    corrupti totam maiores iure praesentium!
-                  </p>
-                </div>
-              </div>
-              <div>
-                <div class="question">
-                  <span
-                    >Is the platform free, and if so, will it remain so?</span
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                  <img src="ressources/icons/plusIcon.svg" alt="icon" />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M9.99992 0C9.29701 0 8.72719 0.56982 8.72719 1.27273V8.72727H1.27273C0.56982 8.72727 0 9.29709 0 10C0 10.7029 0.56982 11.2727 1.27273 11.2727H8.72719V18.7273C8.72719 19.4302 9.29701 20 9.99992 20C10.7028 20 11.2726 19.4302 11.2726 18.7273V11.2727H18.7273C19.4302 11.2727 20 10.7029 20 10C20 9.29709 19.4302 8.72727 18.7273 8.72727H11.2726V1.27273C11.2726 0.56982 10.7028 0 9.99992 0Z"
+                    />
+                  </svg>
                 </div>
                 <div class="answer hidden">
                   <p>
@@ -119,12 +137,24 @@
                   </p>
                 </div>
               </div>
-              <div>
+              <div class="faqObject">
                 <div class="question">
                   <span
                     >Is the platform free, and if so, will it remain so?</span
                   >
-                  <img src="ressources/icons/plusIcon.svg" alt="icon" />
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M9.99992 0C9.29701 0 8.72719 0.56982 8.72719 1.27273V8.72727H1.27273C0.56982 8.72727 0 9.29709 0 10C0 10.7029 0.56982 11.2727 1.27273 11.2727H8.72719V18.7273C8.72719 19.4302 9.29701 20 9.99992 20C10.7028 20 11.2726 19.4302 11.2726 18.7273V11.2727H18.7273C19.4302 11.2727 20 10.7029 20 10C20 9.29709 19.4302 8.72727 18.7273 8.72727H11.2726V1.27273C11.2726 0.56982 10.7028 0 9.99992 0Z"
+                    />
+                  </svg>
                 </div>
                 <div class="answer hidden">
                   <p>
@@ -135,12 +165,52 @@
                   </p>
                 </div>
               </div>
-              <div>
+              <div class="faqObject">
                 <div class="question">
                   <span
                     >Is the platform free, and if so, will it remain so?</span
                   >
-                  <img src="ressources/icons/plusIcon.svg" alt="icon" />
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M9.99992 0C9.29701 0 8.72719 0.56982 8.72719 1.27273V8.72727H1.27273C0.56982 8.72727 0 9.29709 0 10C0 10.7029 0.56982 11.2727 1.27273 11.2727H8.72719V18.7273C8.72719 19.4302 9.29701 20 9.99992 20C10.7028 20 11.2726 19.4302 11.2726 18.7273V11.2727H18.7273C19.4302 11.2727 20 10.7029 20 10C20 9.29709 19.4302 8.72727 18.7273 8.72727H11.2726V1.27273C11.2726 0.56982 10.7028 0 9.99992 0Z"
+                    />
+                  </svg>
+                </div>
+                <div class="answer hidden">
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Modi asperiores molestiae eos non necessitatibus, earum
+                    ipsam ipsa maiores nemo quidem illum. Et optio nihil quis
+                    corrupti totam maiores iure praesentium!
+                  </p>
+                </div>
+              </div>
+              <div class="faqObject">
+                <div class="question">
+                  <span
+                    >Is the platform free, and if so, will it remain so?</span
+                  >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M9.99992 0C9.29701 0 8.72719 0.56982 8.72719 1.27273V8.72727H1.27273C0.56982 8.72727 0 9.29709 0 10C0 10.7029 0.56982 11.2727 1.27273 11.2727H8.72719V18.7273C8.72719 19.4302 9.29701 20 9.99992 20C10.7028 20 11.2726 19.4302 11.2726 18.7273V11.2727H18.7273C19.4302 11.2727 20 10.7029 20 10C20 9.29709 19.4302 8.72727 18.7273 8.72727H11.2726V1.27273C11.2726 0.56982 10.7028 0 9.99992 0Z"
+                    />
+                  </svg>
                 </div>
                 <div class="answer hidden">
                   <p>
@@ -161,11 +231,12 @@
                 at :
               </p>
               <div class="contactBox__emailContainer">
-                <span value="contact@harrycards.com"
-                  >contact@harrycards.com</span
-                >
-                <p><span>copy</span> <i class="fa-regular fa-copy"></i></p>
+                <span id="emailToCopy">contact@harrycards.com</span>
+                <p class="copyBtn">
+                  <span>copy</span> <i class="fa-regular fa-copy"></i>
+                </p>
               </div>
+              <span class="fake">* fake email</span>
             </div>
           </div>
         </div>
@@ -173,14 +244,16 @@
 
       <footer>
         <nav class="footerNav">
-          <a href="" class="navLink">Home</a>
+          <a href="/" class="navLink">Home</a>
           <a href="" class="navLink">Collection</a>
-          <a href="" class="navLink">FAQ</a>
+          <a href="#faq" class="navLink">FAQ</a>
           <a href="" class="navLink">Dashboard</a>
         </nav>
 
         <span>©️ Copyright 2024</span>
       </footer>
     </div>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
