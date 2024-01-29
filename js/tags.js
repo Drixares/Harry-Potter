@@ -1,34 +1,40 @@
 const filterTags = document.querySelectorAll(".filterTag");
 const tagList = document.querySelector(".tagsList");
-let tags = [];
+const allTags = document.querySelectorAll(".tag");
+console.log(allTags[0].childNodes[1]);
 
-// console.log(filterTags);
-
-filterTags.forEach((tag) => {
-  tag.addEventListener("click", useTag);
+filterTags.forEach((filter) => {
+  filter.addEventListener("click", useTag);
 });
 
 function useTag(e) {
   if (e.target.getAttribute("data-active") === "false") {
-    const newtag = document.createElement("div");
-
-    newtag.innerHTML = `<i class="fa-solid fa-xmark closeTag"></i> <span>By ${e.target.getAttribute(
-      "data-name"
-    )}</span>`;
-    tagList.appendChild(newtag);
-    e.target.setAttribute("data-active", "true");
+    const tagtargeted = document.querySelector(
+      `.tag[data-name="${e.target.getAttribute("data-name")}"]`
+    );
+    tagtargeted.classList.add("visible");
   }
 }
 
+allTags.forEach((tag) => {
+  tag.childNodes[1].addEventListener("click", () => {
+    const filterTargeted = document.querySelector(
+      `.filterTag[data-name="${tag.getAttribute("data-name")}"`
+    );
+    console.log(filterTargeted);
+    filterTargeted.setAttribute("data-active", "false");
+    tag.classList.remove("visible");
+  });
+});
+
 function verifyTag() {
-  filterTags.forEach((tag) => {
-    if (tag.getAttribute("data-active") === "true") {
-      const newtag = document.createElement("div");
-      newtag.innerHTML = `<i class="fa-solid fa-xmark"></i> <span>By ${tag.getAttribute(
-        "data-name"
-      )}</span>`;
-      tagList.appendChild(newtag);
-      tag.setAttribute("data-active", "true");
+  filterTags.forEach((filter) => {
+    if (filter.getAttribute("data-active") === "true") {
+      // console.log(isActive);
+      const tagTargeted = document.querySelector(
+        `.tag[data-name="${filter.getAttribute("data-name")}"]`
+      );
+      tagTargeted.classList.add("visible");
     }
   });
 }

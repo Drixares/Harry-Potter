@@ -30,36 +30,37 @@
   gap: 20px;
 }
 
-.tagsList > div {
+.tagsList > .tag {
+  display: none;
+}
+
+.tagsList > .tag.visible {
+  display: block;
   padding: 5px 15px;
   background-color: var(--bg2);
   border-radius: 20px;
   cursor: pointer;
 }
 
-.tagsList > div > span,
+.tagsList > .tag.visible > span,
 .cardsBox__filterBox > .filterbtn > i {
   margin-left: 10px;
 }
 
-.tagsList > div:hover {
+.tagsList > .tag.visible:hover {
   background-color: var(--bg1);
 }
 
-.tagsList > div > i:hover {
+.tagsList > .tag.visible > i:hover {
   color: rgb(216, 60, 60);
 }
 
-#filterList {
+#filterList[popover] {
   inset: unset;
   top: anchor(bottom);
   left: anchor(center);
   translate: -50%;
   margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 10px;
   padding: 10px;
   background-color: var(--bg1);
   border: none;
@@ -67,7 +68,7 @@
   border-radius: 10px;
 }
 
-#filterList > div {
+#filterList[popover] > div {
   width: 100%;
   /* background-color: lightblue; */
   border-radius: 5px;
@@ -76,6 +77,65 @@
   cursor: pointer;
 }
 
-#filterList > div:hover {
+#filterList[popover] > div:hover {
   background-color: var(--bg2);
+}
+
+.cardsList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: baseline;
+  gap: 3vw;
+  margin-top: 30px;
+}
+
+.card {
+  position: relative;
+  width: 170px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card > a > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  scale: 1.1;
+  transition: scale 0.2s ease-in-out;
+}
+
+.card:hover img {
+  scale: 1;
+}
+
+figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 10px;
+  padding-block-start: 5px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 100%) 20%,
+    rgba(0, 0, 0, 0%)
+  );
+  /* pointer-events: none; */
+}
+
+.card-name {
+  font-weight: 500;
+  font-size: 16px;
+  color: #f4f4f4;
+}
+
+.card-actor {
+  color: var(--text-nav-color-1);
+  font-size: 0.9rem;
 }
