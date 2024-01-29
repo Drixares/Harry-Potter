@@ -23,7 +23,6 @@ function createCards() {
     card.className = "card";
 
     const image = perso.image ? perso.image : `ressources/${perso.name}.webp`;
-    console.log(image);
 
     const template = `
       <figure class="card">
@@ -33,7 +32,7 @@ function createCards() {
               <p class="card-actor">${perso.actor}</p>
           </figcaption>
           <div class="cards-absolute-elements">
-              <img src="${perso.house}.png">
+              <img src="ressources/images/${perso.house}.png">
           </div>
       </figure>`;
 
