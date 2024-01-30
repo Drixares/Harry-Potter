@@ -17,7 +17,7 @@
         <nav class="mainNav">
           <ul class="navBox">
             <li><a href="index.html" class="navLink">Home</a></li>
-            <li><a href="" class="navLink">Collection</a></li>
+            <li><a href="collection.html" class="navLink">Collection</a></li>
             <li><a href="index.html#faq" class="navLink">FAQ</a></li>
           </ul>
 
@@ -76,14 +76,15 @@
       </header>
 
       <main>
-        <div class="cardsBox">
+        <div class="cardsBox" id="cardBoxList">
           <div class="cardsBox__filterBox">
             <button class="filterbtn" id="filterBtn" popovertarget="filterList">
-              <span>filter</span> <i class="fa-solid fa-chevron-down"></i>
+              <span>Sort</span> <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="tagsList">
               <div class="tag" data-name="ID">
-                <i class="fa-solid fa-xmark closeTag"></i> <span>By ID</span>
+                <i class="fa-solid fa-xmark closeTag"></i>
+                <span>By ID (default)</span>
               </div>
               <div class="tag" data-name="Name">
                 <i class="fa-solid fa-xmark closeTag"></i> <span>By Name</span>
@@ -98,7 +99,9 @@
             </div>
 
             <div id="filterList" anchor="filterBtn" popover>
-              <div class="filterTag" data-active="true" data-name="ID">ID</div>
+              <div class="filterTag" data-active="true" data-name="ID">
+                ID (default)
+              </div>
               <div class="filterTag" data-active="false" data-name="Name">
                 Name
               </div>
@@ -128,6 +131,6 @@
     </div>
 
     <script src="js/cards.js"></script>
-    <script src="js/tags.js"></script>
+    <!-- <script src="js/tags.js"></script> -->
   </body>
 </html>

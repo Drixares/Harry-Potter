@@ -1,3 +1,8 @@
+
+html {
+  scroll-padding-top: 100px;
+}
+
 .cardsBox {
   padding-inline: var(--padding-inline);
 }
@@ -92,6 +97,7 @@
 
 .card {
   position: relative;
+  /* aspect-ratio: 170px / 250px; */
   width: 170px;
   height: 250px;
   overflow: hidden;
@@ -103,7 +109,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  scale: 1.1;
+  scale: 1.05;
   transition: scale 0.2s ease-in-out;
 }
 
@@ -126,7 +132,6 @@ figcaption {
     rgba(0, 0, 0, 100%) 20%,
     rgba(0, 0, 0, 0%)
   );
-  /* pointer-events: none; */
 }
 
 .card-name {
@@ -138,4 +143,35 @@ figcaption {
 .card-actor {
   color: var(--text-nav-color-1);
   font-size: 0.9rem;
+}
+
+.fa-house {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 25px;
+  right: -10px;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  width: 30px;
+  aspect-ratio: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 60%;
+}
+
+i.gryffindor {
+  color: #d1361b;
+}
+
+i.slytherin {
+  color: #214d3c;
+}
+
+i.hufflepuff {
+  color: #ffd620;
+}
+
+i.ravenclaw {
+  color: #2c289b;
 }
