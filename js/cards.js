@@ -140,8 +140,8 @@ searchBar.addEventListener('input', (e) => {
     card.classList.add('hidden');
   });
 
-  // then get the search value in lowercase to use it for the filter
-  const searchValue =  e.target.value.toLowerCase()
+  // then get the search value in lowercase to use it for the filter (we remove the whites spaces too)
+  const searchValue =  e.target.value.toLowerCase().replace(/\s/g, "");
 
   // if not empty, let's filter !
   if(searchValue) {
