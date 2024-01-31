@@ -4,28 +4,18 @@ const filterTags = document.querySelectorAll(".filterTag");
 const tagList = document.querySelector(".tagsList");
 const allTags = document.querySelectorAll(".tag");
 const searchBar =  document.getElementById('search');
-const tagCombinaisons = [
-  ["ID"],
-  ["House"],
-  ["Name"],
-  ["Actor Name"],
-  ["ID", "House"],
-  ["House", "ID"],
-  ["Name", "House"],
-  ["House", "Name"],
-  ["Actor Name", "House"],
-  ["House", "Actor Name"],
-];
 let dataArray = [];
 
 async function getPersonnage() {
+  // fetch the data in the API
   const data = await fetch(urlAPI);
   const personnages = await data.json();
 
-  selectPerso(personnages);
+  stockPersonnage(personnages);
 }
 
-function selectPerso(personnages) {
+// Stock the personnages in an array.
+function stockPersonnage(personnages) {
   for (let i = 0; i < 20; i++) {
     dataArray.push(personnages[i]);
   }
@@ -33,6 +23,8 @@ function selectPerso(personnages) {
   createCards();
 }
 
+
+// Create the template of each card
 function createCards() {
   dataArray.forEach((perso) => {
     if (perso.house) {
@@ -40,8 +32,10 @@ function createCards() {
       card.className = "card";
       card.id = `${perso.id}`
 
-      const image = perso.image ? perso.image : `ressources/${perso.name}.webp`;
+      // If there is no image given in the api for a personnage, use a img in my folder.
+      const image = perso.image ? perso.image : `../ressources/${perso.name}.webp`;
 
+      // Creating the template for the cards
       const template = `
             <img src="${image}" alt="Personnage image.">
             <figcaption>
@@ -51,88 +45,109 @@ function createCards() {
             <i class="fa-solid fa-house ${perso.house.toLowerCase()}"></i>`;
 
       card.innerHTML = template;
+
+      // On each card, add a onclick event to redirect on its information page.
       card.addEventListener("click", () => {
         window.location.href = "cartes/carte.html?id=" + perso.id;
       });
+
+      // Add the cards in the box cards.
       boxCards.appendChild(card);
     }
   });
 }
 
+
 filterTags.forEach((filter) => {
   filter.addEventListener("click", addTag);
 });
 
+// Add a tag filter
 function addTag(e) {
+
+  // If data-active attribut is set to false
   if (e.target.getAttribute("data-active") === "false") {
-    if (verifyTagCompatibility(e.target)) {
-      const tagtargeted = document.querySelector(
-        `.tag[data-name="${e.target.getAttribute("data-name")}"]`
-      );
-      tagtargeted.classList.add("visible");
-      e.target.setAttribute("data-active", "true");
+    // And if there is already a filter set to true, set it to false and hide it.
+    if (document.querySelector('.filterTag[data-active="true"]')) {
+      (document.querySelector(`.tag[data-name="${document.querySelector('.filterTag[data-active="true"]').getAttribute('data-name')}"]`).classList.remove('visible'));
+      document.querySelector('.filterTag[data-active="true"]').setAttribute('data-active', "false");
     }
+
+    // If there is no filter set to true
+    const tagTargeted = document.querySelector(`.tag[data-name="${e.target.getAttribute("data-name")}"]`);
+    tagTargeted.classList.add("visible");
+    e.target.setAttribute("data-active", "true");
+    
+    // Get the filter done
+    filterCards(e.target)
   }
 }
 
-function verifyTagCompatibility(filter) {
-  let listTags = [];
-  document
-    .querySelectorAll("[data-active='true']")
-    .forEach((tag) => listTags.push(tag.getAttribute("data-name")));
+function filterCards(filtre) {
 
-  listTags.push(filter.getAttribute("data-name"));
+  // Hide all the cards
+  const cardsArray = document.querySelectorAll('.card');
+  cardsArray.forEach(card => {
+    card.classList.add('hidden');
+  })
 
-  // Vérifier si la combinaison est possible en comparant avec tagsCombinaisons
-  if (
-    tagCombinaisons.findIndex(
-      (element) => JSON.stringify(element) === JSON.stringify(listTags)
-    ) !== -1
-  )
-    return true;
-}
-
-allTags.forEach((tag) => {
-  tag.childNodes[1].addEventListener("click", () => {
-    const filterTargeted = document.querySelector(
-      `.filterTag[data-name="${tag.getAttribute("data-name")}"`
-    );
-    filterTargeted.setAttribute("data-active", "false");
-    tag.classList.remove("visible");
-  });
-});
-
-function initializeTag() {
-  filterTags.forEach((filter) => {
-    if (filter.getAttribute("data-active") === "true") {
-      const tagTargeted = document.querySelector(
-        `.tag[data-name="${filter.getAttribute("data-name")}"]`
-      );
-      tagTargeted.classList.add("visible");
+  // Create a filtered array using the dataArray created at the beginning (contains all the objects of the API call)
+  const filteredArray = dataArray.filter(perso => perso.house.toLowerCase() === filtre.getAttribute('data-name').toLowerCase());
+  
+  // Compare the information between each object id and card id to found the cards to show
+  filteredArray.forEach(persoFiltered => {
+    for (let i = 0; i < cardsArray.length; i++) {
+      if (cardsArray[i].getAttribute('id') === persoFiltered.id) {
+        cardsArray[i].classList.remove('hidden');
+        // break the loop because we already found the card
+        break;
+      }
     }
   });
-}
 
-async function start() {
-  await getPersonnage();
-  initializeTag();
-  console.log(
-    dataArray.filter((data) => data.house.toLowerCase() === "gryffindor")
-  );
 }
 
 
+// Remove house filter.
+allTags.forEach((tag) => {
 
+  // Removing a tag by clicking on his cross
+    tag.childNodes[1].addEventListener("click", () => {
+
+      // Put all cards visible 
+      const cardsArray = document.querySelectorAll('.card');
+      cardsArray.forEach(card => {
+        card.classList.remove('hidden');
+      });
+
+      // Set the filter data-active attribut on false then put de tag hidden.
+      const filterTargeted = document.querySelector(`.filterTag[data-name="${tag.getAttribute("data-name")}"`);
+      filterTargeted.setAttribute("data-active", "false");
+      tag.classList.remove("visible");
+    });
+
+});
+
+
+// Function for the search input.
 searchBar.addEventListener('input', (e) => {
+  // reset of the box error
+  document.getElementById('boxError').innerText = '';
+
+  // Put all the cards hidden
   const allCards =  document.querySelectorAll('.card');
   allCards.forEach(card => {
     card.classList.add('hidden');
   });
-  const searchValue =  e.target.value.toLowerCase();
 
+  // then get the search value in lowercase to use it for the filter
+  const searchValue =  e.target.value.toLowerCase()
+
+  // if not empty, let's filter !
   if(searchValue) {
     let newArray = dataArray.filter(perso => perso.name.toLowerCase().startsWith(searchValue.toLowerCase()));
-
+    
+    // looking for the card
     if(newArray.length <= 0) {
       document.getElementById('boxError').innerText = 'Aucun carte trouvée.'
     } else {
@@ -141,15 +156,22 @@ searchBar.addEventListener('input', (e) => {
         cardFiltered.classList.remove('hidden');
       }
     }
+
+  // if the search value is empty, put all cards visible. 
   } else {
     allCards.forEach(card => {
       card.classList.remove('hidden');
     })
   }
-
-
+  
+  
 })
 
-
+async function start() {
+  await getPersonnage();
+  console.log(dataArray.filter((data) => data.house.toLowerCase() === "gryffindor"));
+}
 
 start();
+
+
