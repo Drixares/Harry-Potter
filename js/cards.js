@@ -3,6 +3,7 @@ const urlAPI = "https://hp-api.onrender.com/api/characters";
 const filterTags = document.querySelectorAll(".filterTag");
 const tagList = document.querySelector(".tagsList");
 const allTags = document.querySelectorAll(".tag");
+const searchBar =  document.getElementById('search');
 const tagCombinaisons = [
   ["ID"],
   ["House"],
@@ -37,18 +38,17 @@ function createCards() {
     if (perso.house) {
       const card = document.createElement("figure");
       card.className = "card";
+      card.id = `${perso.id}`
 
       const image = perso.image ? perso.image : `ressources/${perso.name}.webp`;
 
       const template = `
-        <figure class="card">
-            <a href="#"><img src="${image}" alt="Personnage image."></a>
+            <img src="${image}" alt="Personnage image.">
             <figcaption>
                 <h3 class="card-name">${perso.name}</h3>
                 <p class="card-actor">${perso.actor}</p>
             </figcaption>
-            <i class="fa-solid fa-house ${perso.house.toLowerCase()}"></i>
-        </figure>`;
+            <i class="fa-solid fa-house ${perso.house.toLowerCase()}"></i>`;
 
       card.innerHTML = template;
       card.addEventListener("click", () => {
@@ -120,5 +120,36 @@ async function start() {
     dataArray.filter((data) => data.house.toLowerCase() === "gryffindor")
   );
 }
+
+
+
+searchBar.addEventListener('input', (e) => {
+  const allCards =  document.querySelectorAll('.card');
+  allCards.forEach(card => {
+    card.classList.add('hidden');
+  });
+  const searchValue =  e.target.value.toLowerCase();
+
+  if(searchValue) {
+    let newArray = dataArray.filter(perso => perso.name.toLowerCase().startsWith(searchValue.toLowerCase()));
+
+    if(newArray.length <= 0) {
+      document.getElementById('boxError').innerText = 'Aucun carte trouvée.'
+    } else {
+      for (let card = 0; card < newArray.length; card++) {
+        const cardFiltered = document.getElementById(`${newArray[card].id}`);
+        cardFiltered.classList.remove('hidden');
+      }
+    }
+  } else {
+    allCards.forEach(card => {
+      card.classList.remove('hidden');
+    })
+  }
+
+
+})
+
+
 
 start();
