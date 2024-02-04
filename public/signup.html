@@ -11,7 +11,7 @@
     <div class="imgBox">
       <img src="ressources/images/background.jpg">
     </div>
-    <div class="formBox" method="post">
+    <div class="formBox" >
       <form class="formContainer">
         <div class="textBox">
           <h2>Sign up</h2>
@@ -21,15 +21,15 @@
           <div class="inputsContainer">
             <div class="inputElementBox">
               <label for="formNickname">Nickname</label>
-              <input type="email" id="formNickname" placeholder="Enter your nickname">
+              <input type="text" id="formNickname" placeholder="Enter your nickname" name="user">
             </div>
             <div class="inputElementBox">
               <label for="formEmail">Email</label>
-              <input type="email" id="formEmail" placeholder="Enter your email">
+              <input type="email" id="formEmail" placeholder="Enter your email" name="email">
             </div>
             <div class="inputElementBox">
               <label for="formPassword">Password</label>
-              <input type="password" id="formPassword" placeholder="Enter your password">
+              <input type="password" id="formPassword" placeholder="Enter your password" name="password">
             </div>
           </div>
           <div class="moreBox">
@@ -38,6 +38,7 @@
               <label for="remember">Remember me</label>
             </div>
           </div>
+          <div id="formError"></div>
         </div>
 
         <div class="btnBox">

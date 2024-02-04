@@ -21,17 +21,19 @@ const validRegister = (req, res) => {
         
                 myPool.query(q, [...values], (err, data) => {
                     if (err) throw err;
-                    // res.status(201).json(data)
+                    res.redirect("/user/dashboard")
                 })
+
             } else {
                 res.status(400).json({message: "Un compte existe déjà avec cette adresse mail."})
             }
         })
 
     } else {
-        res.json({message: "L'email est invalide."})
+        res.status(400).json({message: "L'email est invalide."})
     }
 
 }
+
 
 export default validRegister;

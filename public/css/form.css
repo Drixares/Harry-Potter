@@ -73,6 +73,10 @@ html, .wrapper {
   font-family: 'Outfit', sans-serif;
 }
 
+.formContainer {
+  width: 375px;
+}
+
 .formContainer > * + * {
   margin-top: 60px;
 }
@@ -166,4 +170,12 @@ input::placeholder
   color: var(--primary);
   cursor: pointer;
   text-decoration: none;
+} 
+
+#formError {
+  display: none;
+  color: red;
+  font-size: var(--text-mp-size);
+  text-align: center;
+  margin-top: 20px;
 }

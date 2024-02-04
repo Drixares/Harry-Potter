@@ -9,11 +9,14 @@ const app = express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(express.static("../public"))
-app.use('/', router)
 // parse application/json
 app.use(bodyParser.json())
 
+app.use(express.static("../public"))
+
+app.use('/', router)
+
+
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Site lancé sur le port ${process.env.PORT}`);
+  console.log(`Site lancé sur http://localhost:${process.env.PORT}`);
 })

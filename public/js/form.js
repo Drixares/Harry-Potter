@@ -2,37 +2,53 @@ const formNickname = document.getElementById('formNickname');
 const formEmail = document.getElementById('formEmail');
 const formPassword = document.getElementById('formPassword');
 const form = document.querySelector('form');
+const error = document.getElementById('formError');
+
 
 // Fonction qui vérifie l'email avec un regex dédié aux emails
 function verifyEmail(input, email) {
-  const regEx =
-    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (regEx.test(email)) {
-      input.style.borderBottom = '2px solid green'
-      return true
-  } else {
-      input.style.borderBottom = '2px solid var(--color-error)'
-      return false
-  }
-}
 
+  if (!email) {
+      input.style.border = 'none';
+      return false
+  } else {
+    const regEx =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regEx.test(email)) {
+        input.style.border = '2px solid green'
+        return true
+    } else {
+        input.style.border = '2px solid red'
+        return false
+    }
+  }
+
+}
 
 // Même chose que la fonction avec l'email mais avec un regex différent pour le mot de passe.
 function verifyPassword(input, password) {
   const regEx = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?!@$%^&*-])/;
 
-  if (regEx.test(password)) {
-      input.style.borderBottom = '2px solid green'
-      erreur.style.display = "none"
-      return true
+  if (!password) {
+    input.style.border = 'none';
+    error.innerHTML = '';
+    error.style.display = 'none';
+    return false  
   } else {
-      input.style.borderBottom = '2px solid var(--color-error)'
-      erreur.textContent = 
-          `Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre
-          et un caractère spécial.`
-      erreur.style.display = 'block';
-      return false
+    if (regEx.test(password)) {
+      error.innerHTML = '';
+      error.style.display = 'none';
+      input.style.border = '2px solid green'
+      return true
+    } else {
+        input.style.border = '2px solid red'
+        error.innerHTML = 
+            `The password must contain at least one uppercase letter, one lowercase letter, one number and one special character.`
+        error.style.display = 'block';
+        return false
+    }
   }
+
 }
 
 // function verifyName(input, name) {
@@ -40,13 +56,13 @@ function verifyPassword(input, password) {
 
 //   if (regEx.test(name)) {
 //       input.style.borderBottom = '2px solid green'
-//       erreur.style.display = "none"
+//       error.style.display = "none"
 //       return true
 //   } else {
 //       input.style.borderBottom = '2px solid var(--color-error)'
-//       erreur.textContent = 
+//       error.textContent = 
 //           `Le nom ne peut pas être vide.`
-//       erreur.style.display = 'block';
+//       error.style.display = 'block';
 //       return false
 //   }
 // }
@@ -56,8 +72,6 @@ function verifyPassword(input, password) {
 form.addEventListener('submit', e => {
   e.preventDefault()
 
-  // l'existence de formName permet de savoir si c'est l'inscription ou le login.
-  // la condition agit donc en fonction de si c'est l'inscription ou le login
   if (formNickname) {
       if (formNickname.value  && verifyEmail && verifyPassword) { 
           
@@ -72,10 +86,21 @@ form.addEventListener('submit', e => {
                   password: formPassword.value
               })
           })
+          .then(res => {
+              if (res.redirected) {
+                window.location.href = res.url;
+              } else {
+                res.json().then(data => {
+                  error.style.display = 'block';
+                  error.innerHTML = data.message;
+                })
+              }
+          })
+          .catch(err => console.log(err))
           
       } else {
-          erreur.textContent = "Le formulaire est mal rempli.";
-          erreur.style.display = 'block';
+          error.innerHTML = "Le formulaire est mal rempli.";
+          error.style.display = 'block';
       }
 
   } else {
@@ -91,10 +116,21 @@ form.addEventListener('submit', e => {
                   password: formPassword.value,
               })
           })
+          .then(res => {
+            if (res.redirected) {
+              window.location.href = res.url;
+            } else {
+              res.json().then(data => {
+                error.style.display = 'block';
+                error.innerHTML = data.message;
+              })
+            }
+          })
+          .catch(err => console.log(err))
           
       } else {
-          erreur.textContent = "Le formulaire est mal rempli.";
-          erreur.style.display = 'block';
+          error.innerHTML = "Le formulaire est mal rempli.";
+          error.style.display = 'block';
       }
 
   }
@@ -107,3 +143,13 @@ function getUrl() {
   
   return newUrl;
 }
+
+
+
+formEmail.addEventListener('input', e => {
+  verifyEmail(e.target, e.target.value);
+})
+
+formPassword.addEventListener('input', e => {
+  verifyPassword(e.target, e.target.value);
+})

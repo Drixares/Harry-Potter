@@ -6,3 +6,6 @@ export const router = express.Router()
 
 router.post('/formulaire/user/register', validRegister);
 router.post('/formulaire/user/login', validLogin);
+router.get('/user/dashboard', (req, res) => {
+  res.sendFile('dashboard.html', {root: `../public/`})
+});
