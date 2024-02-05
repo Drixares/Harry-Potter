@@ -1,4 +1,3 @@
-const formNickname = document.getElementById('formNickname');
 const formEmail = document.getElementById('formEmail');
 const formPassword = document.getElementById('formPassword');
 const form = document.querySelector('form');
@@ -51,62 +50,13 @@ function verifyPassword(input, password) {
 
 }
 
-// function verifyName(input, name) {
-//   const regEx = /^\S/;
-
-//   if (regEx.test(name)) {
-//       input.style.borderBottom = '2px solid green'
-//       error.style.display = "none"
-//       return true
-//   } else {
-//       input.style.borderBottom = '2px solid var(--color-error)'
-//       error.textContent = 
-//           `Le nom ne peut pas être vide.`
-//       error.style.display = 'block';
-//       return false
-//   }
-// }
-
-
 // Evènement d'envoi du formulaire 
 form.addEventListener('submit', e => {
   e.preventDefault()
 
-  if (formNickname) {
-      if (formNickname.value  && verifyEmail && verifyPassword) { 
-          
-          fetch(getUrl() + '/formulaire/user/register', {
-              method: "POST",
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                  user: formNickname.value,
-                  email: formEmail.value,
-                  password: formPassword.value
-              })
-          })
-          .then(res => {
-              if (res.redirected) {
-                window.location.href = res.url;
-              } else {
-                res.json().then(data => {
-                  error.style.display = 'block';
-                  error.innerHTML = data.message;
-                })
-              }
-          })
-          .catch(err => console.log(err))
-          
-      } else {
-          error.innerHTML = "Le formulaire est mal rempli.";
-          error.style.display = 'block';
-      }
-
-  } else {
       if (verifyEmail && verifyPassword) { 
           
-          fetch(getUrl() + '/formulaire/user/login', {
+          fetch(getUrl() + '../../../formulaire/user/login', {
               method: "POST",
               headers: {
                   'Content-Type': 'application/json',
@@ -129,11 +79,10 @@ form.addEventListener('submit', e => {
           .catch(err => console.log(err))
           
       } else {
-          error.innerHTML = "Le formulaire est mal rempli.";
+          error.innerHTML = "The form is not correctly filled.";
           error.style.display = 'block';
       }
 
-  }
 })
 
 function getUrl() {
@@ -143,7 +92,6 @@ function getUrl() {
   
   return newUrl;
 }
-
 
 
 formEmail.addEventListener('input', e => {

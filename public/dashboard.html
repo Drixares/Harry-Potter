@@ -3,9 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../css/dashboard.css">
+  <script src="https://kit.fontawesome.com/d3a9f97c9c.js" crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
 <body>
-  <h1>Dashboard</h1>
+  <div class="wrapper">
+  
+    <nav class="sidebar">
+      <div class="closeBtnBox">
+          <span><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <div class="navBox">
+        <span class="infos-menu">Menu</span>
+        <ul>
+          <li><a href="" data-active="true">Dashboard</a></li>
+          <li><a href="" data-active="false">Your cards</a></li>
+          <li><a href="" data-active="false">Help</a></li>
+          <li><a href="" data-active="false">Settings</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="pageContent">
+      <header class="headerBar">
+        <div class="headerInformationsBox">
+          <span class="dateInfos">Friday, March 03</span>
+          <span class="welcomingInfos">Good Morning !</span>
+        </div>
+        <div class="headerActionsBox">
+          <div class="toggleMode"></div>
+          <div class="notificationsBox">
+            <i class="fa-regular fa-bell"></i>
+          </div>
+          <div class="profileBox">
+            <div class="profileImgBox">
+              <img src="../../ressources/images/Harry-Potter.jpg" alt="profile image">
+            </div>
+            <span class="profileIcon">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+          </div>
+      </header>
+      <main>
+        <div class="profileDashboardBox accountStatsBox">
+          <div class="profileDashboardContainer accountStatsContainer">
+            <h2>Account Stats</h2>
+            <div class="statBox">
+              <div class="statItem cards">
+                <span class="statItem__number">7</span>
+                <span class="statItem__name">Cards</span>
+              </div>
+              <div class="statItem">
+                <span class="statItem__number">7</span>
+                <span class="statItem__name">Houses</span>
+              </div>
+              <div class="statItem">
+                <span class="statItem__number">7</span>
+                <span class="statItem__name">Friends</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="profileDashboardBox">
+          <div class="profileDashboardContainer">
+            <h2>Booster available in </h2>
+            <span class="timerBooster">16h 01m 36s</span>
+          </div>
+        </div>
+      </main>
+      
+    </div>
+
+
+  </div>
+
+  <script src="../../js/dashboard.js"></script>
 </body>
 </html>

@@ -34,6 +34,7 @@ html, .wrapper {
 .wrapper {
   display: flex;
   height: 100vh;
+  position: relative;
 }
 
 .imgBox, .formBox {
@@ -74,7 +75,7 @@ html, .wrapper {
 }
 
 .formContainer {
-  width: 375px;
+  width: 400px;
 }
 
 .formContainer > * + * {
@@ -178,4 +179,31 @@ input::placeholder
   font-size: var(--text-mp-size);
   text-align: center;
   margin-top: 20px;
+}
+
+.goBackBox {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.goBackBox > a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--text-p-size);
+  /* font-weight: 600; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.goBackBox > a > i {
+  transition: 0.3s;
+}
+
+.goBackBox > a:hover > i {
+  transform: translateX(-7px);
 }

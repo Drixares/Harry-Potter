@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/form.css">
-  <title>Login</title>
+  <script src="https://kit.fontawesome.com/d3a9f97c9c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../css/form.css">
+  <title>Sign Up</title>
 </head>
 <body>
   <div class="wrapper">
-    <div class="imgBox">
-      <img src="ressources/images/background.jpg">
+
+    <div class="goBackBox">
+      <a href="/"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
-    <div class="formBox" >
+
+    <div class="imgBox">
+      <img src="../../ressources/images/background.jpg">
+    </div>
+    <div class="formBox">
       <form class="formContainer">
         <div class="textBox">
           <h2>Sign up</h2>
@@ -43,12 +49,13 @@
 
         <div class="btnBox">
           <button type="submit">Create your account</button>
-          <p class="accountQuestion">Already have an account ? &ThickSpace;<span><a href="login.html">Use it !</a></span></p>
+          <p class="accountQuestion">Already have an account ? &ThickSpace;<span><a href="/formulaire/user/login">Use it !</a></span></p>
         </div>
       </form>
     </div>
 
-    <script src="js/form.js"></script>
   </div>
+  
+  <script src="../../js/inscription.js"></script>
 </body>
 </html>

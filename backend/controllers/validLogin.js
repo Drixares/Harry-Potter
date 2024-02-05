@@ -1,10 +1,11 @@
+import bcryptjs from 'bcryptjs';
 import validator from 'validator';
 import { myPool } from '../database.js';
 
 const validLogin = (req, res) => {
 
     if (validator.isEmail(req.body.email)) {
-        const q = `SELECT * FROM user WHERE email = ? AND password = ? ;`
+        const q = `SELECT * FROM user WHERE email = ?;`
 
         const values = [
             req.body.email,
@@ -15,14 +16,24 @@ const validLogin = (req, res) => {
             if (err) throw err
             
             if (data.length === 0) {
-                return res.status(400).json({message: "Identifiant invalide."})
+                return res.status(400).json({message: "Identifiants incorrects."})
             } else {
-                return res.status(201).json({message: "Trouvé !", data: data})    
+
+                bcryptjs.compare(req.body.password, data[0].password, (err, result) => {
+                    if (err) throw err;
+
+                    if (result) {
+                        req.session.userId = data[0].idUser;
+                        res.redirect("/user/dashboard");
+                    } else {
+                        res.json({message: "Identifiants incorrects."})
+                    }
+                })
             }
         })
 
     } else {
-        res.json({message: "L'email est invalide."})
+        res.json({message: "Identifiants incorrects."})
     }
 }
 

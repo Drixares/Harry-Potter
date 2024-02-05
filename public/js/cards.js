@@ -169,7 +169,6 @@ searchBar.addEventListener('input', (e) => {
 
 async function start() {
   await getPersonnage();
-  console.log(dataArray.filter((data) => data.house.toLowerCase() === "gryffindor"));
 }
 
 start();

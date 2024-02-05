@@ -1,23 +1,13 @@
+
+.wapper {
+  position: relative;
+}
+
 header {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-.backBtn {
-  --position: 60px;
-  position: absolute;
-  top: var(--position);
-  left: var(--position);
-  /* transform: translate(-50%, -50%); */
-  color: var(--text);
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.backBtn:hover {
-  text-decoration: underline;
 }
 
 .card-details {
@@ -83,4 +73,32 @@ h1 {
 
 .card-main > * + * {
   margin-top: 20px;
+}
+
+
+.goBackBox {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.goBackBox > a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--text-p-size);
+  /* font-weight: 600; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.goBackBox > a > i {
+  transition: 0.3s;
+}
+
+.goBackBox > a:hover > i {
+  transform: translateX(-7px);
 }

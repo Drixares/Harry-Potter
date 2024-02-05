@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/form.css">
-  <title>Sign up</title>
+  <script src="https://kit.fontawesome.com/d3a9f97c9c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../css/form.css">
+  <title>Sign In</title>
 </head>
 <body>
   <div class="wrapper">
-    <div class="imgBox">
-      <img src="ressources/images/background.jpg">
+
+    <div class="goBackBox">
+      <a href="/"><i class="fa-solid fa-arrow-left"></i> Back</a>
     </div>
-    <div class="formBox" method="post">
+
+    <div class="imgBox">
+      <img src="../../ressources/images/background.jpg">
+    </div>
+    <div class="formBox">
       <form class="formContainer">
         <div class="textBox">
           <h2>Welcome Back !</h2>
@@ -37,14 +43,18 @@
               <a href="">Forgot your password ?</a>
             </div>
           </div>
+          <div id="formError"></div>
         </div>
 
         <div class="btnBox">
           <button type="submit">Sign In</button>
-          <p class="accountQuestion">Don't have an account ? &ThickSpace;<span><a href="signup.html">Create one !</a></span></p>
+          <p class="accountQuestion">Don't have an account ? &ThickSpace;<span><a href="/formulaire/user/register">Create one !</a></span></p>
         </div>
       </form>
     </div>
   </div>
+
+  <script src="../../js/connexion.js"></script>
 </body>
 </html>
+
