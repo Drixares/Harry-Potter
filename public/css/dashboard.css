@@ -4,22 +4,59 @@
   --primary: #d7b972;
   --secondary: #535AFF;
   --secondary-hover: #434aff;
-  --text: #f5f5f5;
-  --text2: #121212;
   --h1-size: calc(30px + 4vw);
-  /* --h2-size: 60px; */
   --h2-size: calc(20px + 2vw);
   --h3-size: calc(16px + 1vw);
   --text-mp-size: calc(12px + 0.1vw);
   --text-p-size: calc(14px + 0.2vw);
   --text-m-size: calc(16px + 0.2vw);
-  --filter: #161927bd;
-  --bg: #161927;
-  --bg1: #212433;
-  --bg2: #383b4d;
   --padding-inline: 5vw;
   --padding-inline2: 15vw;
+  --light-text: #130f1c;
+  --light-text2: #f5f5f5;
+  --light-text3: #7b7b7b;
+  --light-bg: #f9f9fa;
+  --light-bg1: #ffffff;
+  --light-bg2: #f1f1f1;
+  --light-popup-bg: rgba(213, 216, 225, 0.9);
+  --light-infos-box-bg: #a2c1ff;
+  --light-filter: #161927bd;
+  --dark-text: #f5f5f5;
+  --dark-text2: #130f1c;
+  --dark-text3: #979797;
+  --dark-bg: #161927;
+  --dark-bg1: #212433;
+  --dark-bg2: #383b4d;
+  --dark-popup-bg: rgba(33, 36, 51, 0.9);
+  --dark-infos-box-bg: #b4cdff;
+  --dark-filter: #161927bd;
+  --danger-color: rgb(255, 94, 94);
   --green: #01c101;
+  
+}
+
+:root[data-theme="light"] {
+  --text: var(--light-text);
+  --text2: var(--light-text2);
+  --text3: var(--light-text3);
+  --bg: var(--light-bg);
+  --bg1: var(--light-bg1);
+  --bg2: var(--light-bg2);
+  --popup-bg: var(--light-popup-bg);
+  --infos-box-bg: var(--light-infos-box-bg);
+  --filter: var(--light-filter);
+}
+
+:root[data-theme="dark"] {
+  --text: var(--dark-text);
+  --text2: var(--dark-text2);
+  --text3: var(--dark-text3);
+  --bg: var(--dark-bg);
+  --bg1: var(--dark-bg1);
+  --bg2: var(--dark-bg2);
+  --popup-bg: var(--dark-popup-bg);
+  --infos-box-bg: var(--dark-infos-box-bg);
+  --filter: var(--dark-filter);
 }
 
 * {
@@ -76,7 +113,7 @@ nav.sidebar {
   margin: 0 0 10px 10px;
   text-transform: uppercase;
   font-size: 14px;
-  color: #979797;
+  color: var(--text3);
 }
 
 .navContainer {
@@ -106,7 +143,7 @@ nav.sidebar {
 .navContainer a {
   display: inline-block;
   font-size: 18px;
-  color: white;
+  color: var(--text);
   text-decoration: none;
   padding: 10px 0 10px 10px;
   width: 100%;
@@ -144,7 +181,7 @@ nav.sidebar {
 }
 
 .dateInfos {
-  color: #979797;
+  color: var(--text3);
 }
 
 .welcomingInfos {
@@ -221,10 +258,12 @@ nav.sidebar {
   background-color: var(--bg2);
   border: none;
   cursor: pointer;
+  font-size: var(--text-p-size);
+  font-family: 'Outfit', sans-serif;
 }
 
 #profilMenu[popover] button:hover {
-  background-color: rgb(167, 67, 67);
+  background-color: var(--danger-color);
 }
 
 
@@ -268,7 +307,7 @@ main h2 {
   gap: 10px;
   flex: 1;
   height: 210px;
-  background-color: #b4cdff;
+  background-color: var(--infos-box-bg);
   border-radius: 10px;
   font-weight: 600;
 
@@ -288,7 +327,7 @@ main h2 {
 
 .timerBooster {
   font-size: 42px;
-  color: #979797;
+  color: var(--text3);
 }
 
 .navContainer.menu {
@@ -325,7 +364,7 @@ main h2 {
   align-items: center;
   justify-content: center;
   color: var(--text);
-  background-color: rgba(33, 36, 51, 0.9);
+  background-color: var(--popup-bg);
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 3px );
   border-radius: 10px;
@@ -381,7 +420,7 @@ main h2 {
   background-color: var(--secondary);
   border: none;
   border-radius: 5px;
-  color: var(--text);
+  color: var(--text2);
   font-size: var(--text-m-size);
   cursor: pointer;
   transition: background-color 0.3s;
@@ -389,4 +428,32 @@ main h2 {
 
 .tradeFormBtn:hover {
   background-color: var(--secondary-hover);
+}
+
+.toggleMode {
+  height: 40px;
+  width: 90px;
+  background-color: var(--bg2);
+  border-radius: 100vw;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggleMode__circle {
+  height: 35px;
+  width: 35px;
+  border-radius: 100vw;
+  background-color: var(--secondary);
+  position: absolute;
+  top: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+:root[data-theme=light] .toggleMode__circle {
+  transform: translate3d(5px, -50%, 0);
+
+}
+
+:root[data-theme=dark] .toggleMode__circle {
+  transform: translate3d(50px, -50%, 0);
 }

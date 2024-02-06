@@ -41,10 +41,6 @@ router.get('/formulaire/user/register', verifyConnexion, (req, res) => {
   res.sendFile('signup.html', {root: `../public/`})
 })
 
-router.post('/formulaire/user/logout', (req, res) => {
-  req.session.destroy((err) => {
-    res.redirect('/formulaire/user/login')
-  })
-
-  res.clearCookie(process.env.SESSION_NAME)
+router.get('/collection', (req, res) => {
+  res.sendFile('collection.html', {root: `../public/`})
 })
