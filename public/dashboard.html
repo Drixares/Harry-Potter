@@ -15,13 +15,23 @@
           <span><i class="fa-solid fa-xmark"></i></span>
       </div>
       <div class="navBox">
-        <span class="infos-menu">Menu</span>
-        <ul>
-          <li><a href="" data-active="true">Dashboard</a></li>
-          <li><a href="" data-active="false">Your cards</a></li>
-          <li><a href="" data-active="false">Help</a></li>
-          <li><a href="" data-active="false">Settings</a></li>
-        </ul>
+        <div class="navContainer">
+          <span class="infos-menu">Dashboard</span>
+          <ul>
+            <li><a href="" data-active="true">Dashboard</a></li>
+            <li><a href="" data-active="false">Your cards</a></li>
+            <li><a href="" data-active="false">Help</a></li>
+            <li><a href="" data-active="false">Settings</a></li>
+          </ul>
+        </div>
+        <div class="navContainer menu">
+          <span class="infos-menu">Menu</span>
+          <ul>
+            <li><a href="/" data-active="false">Home</a></li>
+            <li><a href="/collection.html" data-active="false">Collection</a></li>
+            <li><a href="/#faq" data-active="false">FAQ</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -36,14 +46,21 @@
           <div class="notificationsBox">
             <i class="fa-regular fa-bell"></i>
           </div>
-          <div class="profileBox">
+          <button class="profileBox" id="profileBox" popovertarget="profilMenu">
             <div class="profileImgBox">
               <img src="../../ressources/images/Harry-Potter.jpg" alt="profile image">
             </div>
             <span class="profileIcon">
               <i class="fa-solid fa-chevron-down"></i>
             </span>
+          </button>
+
+          <div class="profilMenu" anchor="profileBox" id="profilMenu" popover>
+            <form action="../../formulaire/user/logout" method="post">
+              <button type="submit">Logout</button>
+            </form>
           </div>
+          
       </header>
       <main>
         <div class="profileDashboardBox accountStatsBox">
@@ -51,15 +68,15 @@
             <h2>Account Stats</h2>
             <div class="statBox">
               <div class="statItem cards">
-                <span class="statItem__number">7</span>
+                <span class="statItem__number">17</span>
                 <span class="statItem__name">Cards</span>
               </div>
               <div class="statItem">
-                <span class="statItem__number">7</span>
+                <span class="statItem__number">3</span>
                 <span class="statItem__name">Houses</span>
               </div>
               <div class="statItem">
-                <span class="statItem__number">7</span>
+                <span class="statItem__number">5</span>
                 <span class="statItem__name">Friends</span>
               </div>
             </div>
@@ -72,7 +89,28 @@
           </div>
         </div>
       </main>
+
+      <div class="popupBtn">
+        <i class="fa-regular fa-comments"></i>
+      </div>
       
+      <div class="popupBox">
+        <div class="popupContainer">
+          <h3>Trade cards with your friends</h3>
+          <form action="" class="tradeForm">
+            <div class="tradeForm__inputBox">
+              <label for="cardName">Card name</label>
+              <input type="text" id="cardName" name="cardName">
+            </div>
+            <div class="tradeForm__inputBox">
+              <label for="friendName">Friend name</label>
+              <input type="text" id="friendName" name="friendName">
+            </div>
+            <button type="submit" class="tradeFormBtn">Send</button>
+          </form>
+        </div>
+      </div>
+
     </div>
 
 
