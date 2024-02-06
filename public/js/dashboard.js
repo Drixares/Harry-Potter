@@ -7,9 +7,12 @@ popupBtn.addEventListener('click', () => {
 });
 
 toggleMode.addEventListener('click', () => {
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
+
+    const rootElement = document.documentElement;
+    let dataTheme = rootElement.getAttribute('data-theme'), newTheme;
+
+    newTheme = (dataTheme === 'dark') ? 'light' : 'dark';
+    rootElement.setAttribute('data-theme', newTheme);
+
+    localStorage.setItem('theme', newTheme);
 });
