@@ -1,8 +1,6 @@
 const faqObjects = document.querySelectorAll(".faqObject");
 const email = document.getElementById("emailToCopy");
 const copyBtn = document.querySelector(".copyBtn");
-const burgerIcon = document.getElementById("burgerIcon");
-const mobileNav = document.querySelector(".mobileNav");
 
 faqObjects.forEach((object) => {
   object.firstElementChild.addEventListener("click", () => {
@@ -18,8 +16,4 @@ copyBtn.addEventListener("click", () => {
     copyBtn.innerHTML = '<span>copy</span> <i class="fa-regular fa-copy"></i>';
     copyBtn.style.color = "var(--text)";
   }, 1000);
-});
-
-burgerIcon.addEventListener("click", () => {
-  mobileNav.classList.toggle("open");
 });

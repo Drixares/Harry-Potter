@@ -76,7 +76,7 @@ html, .wrapper {
 }
 
 .formContainer {
-  width: 400px;
+  width: min(80%, 400px);
 }
 
 .formContainer > * + * {
@@ -212,4 +212,15 @@ input::placeholder
 
 .goBackBox > a:hover > i {
   transform: translateX(-7px);
+}
+
+
+@media (max-width: 900px) {
+  .imgBox {
+    display: none;
+  }
+
+  .formBox {
+    width: 100%;
+  }
 }

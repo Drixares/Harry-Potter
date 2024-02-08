@@ -96,7 +96,6 @@ function getUrl() {
 
 
 formEmail.addEventListener('input', e => {
-  localStorage.setItem('email', e.target.value);
   verifyEmail(e.target, e.target.value);
 })
 
@@ -104,8 +103,3 @@ formPassword.addEventListener('input', e => {
   verifyPassword(e.target, e.target.value);
 })
  
-if (localStorage.getItem('email')) {
-  formEmail.value = localStorage.getItem('email');
-} else {
-  formEmail.value = '';
-}

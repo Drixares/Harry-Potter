@@ -86,7 +86,7 @@ nav.sidebar {
   padding-left: 30px;
 }
 
-.closeBtnBox {
+.sidebar > .closeBtnBox {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -95,8 +95,8 @@ nav.sidebar {
   font-size: 25px;
 }
 
-.closeBtnBox > span {
-  display: flex;
+.sidebar > .closeBtnBox > span {
+  display: none;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -105,15 +105,19 @@ nav.sidebar {
   border-radius: 5px;
 }
 
-.closeBtnBox > span:hover {
+.sidebar > .closeBtnBox > span:hover {
   background-color: var(--bg2);
 }
 
 .infos-menu {
   margin: 0 0 10px 10px;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: var(--text-mp-size);
   color: var(--text3);
+}
+
+.navBox {
+  position: relative;
 }
 
 .navContainer {
@@ -142,7 +146,7 @@ nav.sidebar {
 
 .navContainer a {
   display: inline-block;
-  font-size: 18px;
+  font-size: var(--text-p-size);
   color: var(--text);
   text-decoration: none;
   padding: 10px 0 10px 10px;
@@ -169,7 +173,7 @@ nav.sidebar {
   background-color: var(--bg1);
   width: 100%;
   height: 80px;
-  padding-inline: 20px 80px;
+  padding-inline: 20px var(--padding-inline);
 }
 
 
@@ -185,7 +189,7 @@ nav.sidebar {
 }
 
 .welcomingInfos {
-  font-size: 22px;
+  font-size: var(--text-m-size);
   color: var(--text);
 }
 
@@ -286,16 +290,14 @@ main h2 {
 }
 
 .profileDashboardBox {
-  margin-left: 80px;
+  margin-inline: 10vw;
 }
 
-.profileDashboardContainer {
-  width: 60%;
-}
 
 .statBox {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -306,10 +308,11 @@ main h2 {
   justify-content: center;
   gap: 10px;
   flex: 1;
-  height: 210px;
+  height: clamp(100px, 20vw, 200px);
   background-color: var(--infos-box-bg);
   border-radius: 10px;
   font-weight: 600;
+  padding: 10px;
 
 }
 
@@ -318,15 +321,15 @@ main h2 {
 }
 
 .statItem__number {
-  font-size: 50px;
+  font-size: var(--h2-size);
 }
 
 .statItem__name {
-  font-size: 40px;
+  font-size: var(--h3-size);
 }
 
 .timerBooster {
-  font-size: 42px;
+  font-size: calc(var(--h2-size) + 4px);
   color: var(--text3);
 }
 
@@ -337,7 +340,7 @@ main h2 {
 .popupBtn {
   position: fixed;
   bottom: 50px;
-  right: 80px;
+  right: 5vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -357,7 +360,8 @@ main h2 {
   transform: translate(-50%, -54%);
   z-index: 100;
   height: 500px;
-  width: 500px;
+  /* width: max(300px, 60%); */
+  width: clamp(300px, 60%, 700px);
   display: flex;
   opacity: 0;
   visibility: hidden;
@@ -456,4 +460,41 @@ main h2 {
 
 :root[data-theme=dark] .toggleMode__circle {
   transform: translate3d(50px, -50%, 0);
+}
+
+.deployNav {
+  display: none;
+}
+
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    height: 100vh;
+    transition: transform 0.3s;
+  }
+
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+
+  .deployNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    padding-inline: 10px;
+    height: 40px;
+    background-color: var(--bg1);
+    transform: translate(-50%, 0);
+    border-radius: 0 5px 5px 0; 
+  }
+
+
 }
