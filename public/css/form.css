@@ -190,7 +190,7 @@ input::placeholder
 .goBackBox {
   position: absolute;
   top: 50px;
-  left: 100px;
+  left: 10vw;
   transform: translate(-50%, -50%);
   z-index: 10;
 }

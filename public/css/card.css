@@ -1,3 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --primary: #d7b972;
+  --secondary: #535AFF;
+  --secondary-hover: #434aff;
+  --h1-size: calc(30px + 4vw);
+  --h2-size: calc(20px + 2vw);
+  --h3-size: calc(16px + 1vw);
+  --text-mp-size: calc(12px + 0.1vw);
+  --text-p-size: calc(14px + 0.2vw);
+  --text-m-size: calc(16px + 0.2vw);
+  --text-infos-size: calc(10px + 0.5vw);
+  --padding-inline: 5vw;
+  --padding-inline2: 15vw;
+  --light-text: #130f1c;
+  --light-text2: #f5f5f5;
+  --light-text3: #7b7b7b;
+  --light-bg: #f9f9fa;
+  --light-bg1: #ffffff;
+  --light-bg2: #f1f1f1;
+  --light-popup-bg: rgba(213, 216, 225, 0.9);
+  --light-infos-box-bg: #a2c1ff;
+  --light-filter: #161927bd;
+  --dark-text: #f5f5f5;
+  --dark-text2: #130f1c;
+  --dark-text3: #979797;
+  --dark-bg: #161927;
+  --dark-bg1: #212433;
+  --dark-bg2: #383b4d;
+  --dark-popup-bg: rgba(33, 36, 51, 0.9);
+  --dark-infos-box-bg: #b4cdff;
+  --dark-filter: #161927bd;
+  --danger-color: rgb(255, 94, 94);
+  --green: #01c101;
+  
+}
+
+:root[data-theme="light"] {
+  --text: var(--light-text);
+  --text2: var(--light-text2);
+  --text3: var(--light-text3);
+  --bg: var(--light-bg);
+  --bg1: var(--light-bg1);
+  --bg2: var(--light-bg2);
+  --popup-bg: var(--light-popup-bg);
+  --infos-box-bg: var(--light-infos-box-bg);
+  --filter: var(--light-filter);
+}
+
+:root[data-theme="dark"] {
+  --text: var(--dark-text);
+  --text2: var(--dark-text2);
+  --text3: var(--dark-text3);
+  --bg: var(--dark-bg);
+  --bg1: var(--dark-bg1);
+  --bg2: var(--dark-bg2);
+  --popup-bg: var(--dark-popup-bg);
+  --infos-box-bg: var(--dark-infos-box-bg);
+  --filter: var(--dark-filter);
+}
 
 .wapper {
   position: relative;
@@ -15,7 +76,7 @@ header {
   flex-direction: column;
   border-radius: 20px;
   background-color: rgba(22, 25, 39, 50%);
-  width: calc(200px + 50vw);
+  width: clamp(300px, 80%, 1000px);
   min-height: 460px;
   padding: 3vw;
 }
@@ -30,7 +91,7 @@ header {
 }
 
 .imgBox {
-  width: 160px;
+  width: clamp(50px, 20%, 200px);
   aspect-ratio: 1 / 1;
   border-radius: 100vw;
   overflow: hidden;
@@ -45,7 +106,8 @@ header {
 .infosBox > .titleBox {
   display: flex;
   align-items: center;
-  gap: 30px;
+  flex-wrap: wrap;
+  column-gap: 30px;
 }
 
 .titleBox > span {
@@ -54,17 +116,17 @@ header {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: var(--h2-size);
 }
 
 .card-main {
   /* background-color: lightblue; */
-  padding-left: 190px;
+  padding-left: min(20vw, 190px);
   padding-top: 20px;
 }
 
 .card-main > p {
-  font-size: 30px;
+  font-size: var(--text-m-size);
 } 
 
 .card-main > p > span {
@@ -102,3 +164,9 @@ h1 {
 .goBackBox > a:hover > i {
   transform: translateX(-7px);
 }
+
+/* @media (max-width: 600px) {
+  .imgBox {
+    display: none;
+  }
+} */

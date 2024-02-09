@@ -124,7 +124,7 @@ header > .mainNav {
 .boxTitle {
   display: flex;
   align-items: center;
-  padding-top: max(10vw, 80px);
+  padding-top: max(10vw, 150px);
   flex-direction: column;
   height: calc(100vh - 125px);
   margin-inline: 30px;

@@ -1,4 +1,3 @@
-
 html {
   scroll-padding-top: 100px;
 }
@@ -10,8 +9,10 @@ html {
 
 .cardsBox__filterSearch {
   display: flex;
+  flex-wrap: wrap-reverse;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   width: 100%;
 }
 
