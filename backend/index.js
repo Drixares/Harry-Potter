@@ -6,7 +6,7 @@ import { router } from './routes/route.js';
 
 dotenv.config()
 
-const app = express();
+export const app = express();
 app.use(session({
   name: process.env.SESSION_NAME,
   secret: process.env.SESSION_SECRET,
@@ -33,5 +33,3 @@ app.use('/', router)
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Site lancé sur http://localhost:${process.env.PORT}`);
 })
-
-export default app;
