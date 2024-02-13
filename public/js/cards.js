@@ -16,7 +16,7 @@ async function getPersonnage() {
 
 // Stock the personnages in an array.
 function stockPersonnage(personnages) {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 22; i++) {
     dataArray.push(personnages[i]);
   }
 
@@ -33,8 +33,7 @@ function createCards() {
       card.id = `${perso.id}`
 
       // If there is no image given in the api for a personnage, use a img in my folder.
-      const image = perso.image ? perso.image : `../ressources/${perso.name}.webp`;
-
+      const image = perso.image;
       // Creating the template for the cards
       const template = `
             <img src="${image}" alt="Personnage image.">
