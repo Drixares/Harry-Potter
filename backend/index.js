@@ -33,3 +33,5 @@ app.use('/', router)
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Site lancé sur http://localhost:${process.env.PORT}`);
 })
+
+export default app;
