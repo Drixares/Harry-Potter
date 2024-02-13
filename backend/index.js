@@ -6,7 +6,7 @@ import { router } from './routes/route.js';
 
 dotenv.config()
 
-export const app = express();
+const app = express();
 app.use(session({
   name: process.env.SESSION_NAME,
   secret: process.env.SESSION_SECRET,
